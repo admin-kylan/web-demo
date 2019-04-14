@@ -8,63 +8,87 @@
     <artifactId>web-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <packaging>war</packaging>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.0.RELEASE</version>
+    </parent>
+
     <properties>
-        <spring-version>5.1.1.RELEASE</spring-version>
-        <alibaba-fastjson-version>1.2.51</alibaba-fastjson-version>
         <junit-version>4.11</junit-version>
         <mysql-connection-java-version>5.1.46</mysql-connection-java-version>
         <commons-version>2.6</commons-version>
-        <httpcomponents-version>4.5.6</httpcomponents-version>
-        <mybatis-version>3.4.6</mybatis-version>
-        <hibernate-version>5.3.7.Final</hibernate-version>
-        <hibernate-validator-version>6.0.13.Final</hibernate-validator-version>
-        <hibernate-jpa-version>1.0.2.Final</hibernate-jpa-version>
-        <jsoup-version>1.11.3</jsoup-version>
-        <slf4j-version>1.7.25</slf4j-version>
+        <httpcomponents-version>4.5.8</httpcomponents-version>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-cloud.version>Finchley.M9</spring-cloud.version>
     </properties>
 
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring-version}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring-version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+        <!--添加MySql依赖-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring-version}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.37</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit-version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${alibaba-fastjson-version}</version>
+            <groupId>org.toile-libre.libe</groupId>
+            <artifactId>curl</artifactId>
+            <version>LATEST</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connection-java-version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--            <version>${mysql-connection-java-version}</version>-->
+<!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
@@ -72,15 +96,15 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>druid</artifactId>-->
+<!--        </dependency>-->
 
 
 
-        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
@@ -89,6 +113,33 @@
             <version>3.8.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.8</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.htmlparser/htmlparser -->
+        <dependency>
+            <groupId>org.htmlparser</groupId>
+            <artifactId>htmlparser</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
