@@ -1,7 +1,6 @@
 package com.cloud.load;
 
 import com.cloud.service.AsinService;
-import com.cloud.test.HtmlString;
 import com.cloud.util.AmazonUrlAsin;
 import com.cloud.util.HtmlParser;
 

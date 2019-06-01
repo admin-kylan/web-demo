@@ -1,15 +1,10 @@
 package com.cloud.load;
 
-import com.cloud.test.HtmlString;
 import com.cloud.service.AsinService;
-import com.cloud.util.AmazonUrlAsin;
-import com.cloud.util.HtmlParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-
-import javax.persistence.PersistenceContext;
 
 /**
  * className LoadTask
@@ -26,7 +21,7 @@ public class InitTask implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        String searchName = "baby";
+        String searchName = "Baby";
         String type = "baby";
         //固定第一页开始
         String page = "1";

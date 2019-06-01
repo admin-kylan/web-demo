@@ -1,7 +1,7 @@
 package com.cloud.service;
 
-import com.cloud.entity.AsinEntity;
 import com.cloud.repository.AsinEntityRepository;
+import com.cloud.entity.AsinEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

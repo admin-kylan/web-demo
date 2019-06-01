@@ -30,6 +30,16 @@ public class AsinEntity implements Serializable {
     @Column
     private String searchName;
 
+    @Column
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getType() {
         return type;
