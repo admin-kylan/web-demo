@@ -1,10 +1,18 @@
 package com.mvc.demo.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * className DemoController
@@ -24,9 +32,61 @@ public class DemoController {
      */
     @RequestMapping(value = "index")
     public String index(HttpServletRequest request) {
-        request.setAttribute("name","戴永标");
+
+        List<JSONObject> list = getListDate();
+        request.setAttribute("list",list);
+
         return "index";
+
     }
+
+
+    /**
+     *  这里返回的数据 [{"name":"老师"}, {"name":"教授"}, {"name":"学生"}]
+     * 这里是自己造的数据
+     * @return  [{"name":"老师"}, {"name":"教授"}, {"name":"学生"}]
+     */
+    public List<JSONObject> getListDate(){
+
+        JSONObject jsonObject = new JSONObject();
+        List<JSONObject> list = new ArrayList<JSONObject>();
+        jsonObject.put("name", "老师");
+        list.add(jsonObject);
+
+        JSONObject jsonObject1 = new JSONObject();
+        jsonObject1.put("name", "教授");
+        list.add(jsonObject1);
+
+        JSONObject jsonObject2 = new JSONObject();
+        jsonObject2.put("name", "学生");
+        list.add(jsonObject2);
+        return list;
+    }
+
+
+    /**
+     * 这个方法会跳转到以form开头的jsp文件
+     * @return
+     */
+    @RequestMapping(value = "form")
+    public String form() {
+        return "form";
+    }
+
+    /**
+     * 这个方法会跳转到以form开头的jsp文件
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "form", method = RequestMethod.POST)
+    public String doForm(HttpServletRequest request) {
+
+        return "form";
+    }
+
+
+
+
 
 
 
