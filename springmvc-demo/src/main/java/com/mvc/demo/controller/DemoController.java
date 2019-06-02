@@ -80,14 +80,11 @@ public class DemoController {
      */
     @RequestMapping(value = "form", method = RequestMethod.POST)
     public String doForm(HttpServletRequest request) {
-
+        String name = request.getParameter("name");
+        String age = request.getParameter("age");
+        System.out.println("name="+name+"---------"+"age="+age);
         return "form";
     }
-
-
-
-
-
 
 
     /**
