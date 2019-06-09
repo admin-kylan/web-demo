@@ -2,10 +2,7 @@ package com.mvc.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -79,11 +76,21 @@ public class DemoController {
      * @return
      */
     @RequestMapping(value = "form", method = RequestMethod.POST)
-    public String doForm(HttpServletRequest request) {
-        String name = request.getParameter("name");
+    @ResponseBody
+    public String doForm(@RequestParam("name") String name,
+                         @RequestParam("age") String age,
+            HttpServletRequest request) {
+
+        System.out.println("name="+name+"---"+"age="+age);
+
+
+/*        String name = request.getParameter("name");
         String age = request.getParameter("age");
         System.out.println("name="+name+"---------"+"age="+age);
-        return "form";
+        Map<String , String> map = new HashMap<String, String>();
+        map.put("name" , name);
+        map.put("age" , age);*/
+        git status "/mvc/demo/form";
     }
 
 
