@@ -90,7 +90,7 @@ public class DemoController {
         Map<String , String> map = new HashMap<String, String>();
         map.put("name" , name);
         map.put("age" , age);*/
-        git status "/mvc/demo/form";
+        return "form";
     }
 
 
